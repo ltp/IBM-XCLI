@@ -1,30 +1,25 @@
 IBM-XCLI
 
-This package provides an abstracted interface to the IBM XIV XCLI utility.
+This module provides a simple object oriented interface to the IBM XIV XCLI utility.
 
-The IBM XIV XCLI is a utility providing a command line interface to an IBM XIV 
-storage array exposing complete management and administrative functionality to 
-the system.
+The IBM XIV XCLI is a utility providing a command line interface to an IBM XIV storage array
+exposing complete management and administrative capabilities of the system.
 
-The primary aim of this package is to provide a simplified and abstracted 
-interface to the XCLI utility so as to reduce duplication of effort through 
-reimlementation and to promote code reuse.
+This module provides a simple interface to the IBM XIV XCLI utility by providing convenient
+wrapper methods for a number of XCLI native method calls.  These methods are named for and are
+analagous to their corresponding XCLI counterparts; for example, a call to the vol_list method
+exposed by this module returns the same data as would an execution of the native vol_list
+command would be expected to return.
 
-The larger portion of the methods exported by this package are "native" calls 
-analagous to their corresponding XCLI counterparts; i.e. the vol_list method 
-returns the same data as an execution of the native vol_list command would be 
-expected to return.
+The primary difference between the return value of method calls exposed by this module and 
+the return value of native XCLI calls is that methods in this module using native method names 
+return a nested hash rather than whitespace delimited or comma-separated data.
 
-The primary difference between the implementation of these "native" calls and 
-their counterparts is the abscense of the column headers in the return values.  
-This is done to remove the need for any unnessecary additional client side 
-post-processing of return values and to maintain a level of consistency in 
-expected return values.
+Note that if access to the raw data as returned by the XCLI native method call is required then
+the raw methods can be used to retrieve CSV data as retured directly from the XCLI.  See the
+RAW METHODS section in the official documentation for further details.
 
-All "native" calls are implemented using CSV output for deliniation of values.
-
-The XCLI utility must be installed on the same machine as from which the 
-script is ran.
+The XCLI utility must be installed on the same machine as from which the script is ran.
 
 INSTALLATION
 
